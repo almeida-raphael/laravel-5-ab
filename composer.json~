@@ -1,0 +1,27 @@
+{
+    "name": "almeida/ab",
+    "description": "A server-side A/B testing tool for Laravel 5.",
+    "keywords": ["laravel","optimizely","ab","split","testing"],
+    "authors": [
+        {
+            "name": "Raphael Almeida",
+        }
+    ],
+    "license" : "MIT",
+    "require": {
+        "php": ">=5.4.0",
+        "illuminate/support": "5.*",
+        "symfony/console": "*",
+        "league/csv": "~6.0"
+    },
+    "require-dev": {
+        "orchestra/testbench": "2.2.*",
+        "mockery/mockery": "*",
+        "satooshi/php-coveralls": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Almeida\\AB\\": "src/"
+        }
+    }
+}
