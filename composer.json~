@@ -4,7 +4,7 @@
     "keywords": ["laravel","optimizely","ab","split","testing"],
     "authors": [
         {
-            "name": "Raphael Almeida",
+            "name": "Raphael Almeida"
         }
     ],
     "license" : "MIT",
