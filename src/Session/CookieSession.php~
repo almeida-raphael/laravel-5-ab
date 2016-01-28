@@ -1,15 +1,15 @@
-<?php namespace RCAlmeida\AB\Session;
+<?php namespace Jenssegers\AB\Session;
 
-use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Cookie;
 
-class LaravelSession implements SessionInterface {
+class CookieSession implements SessionInterface {
 
     /**
-     * The session key.
+     * The name of the cookie.
      *
      * @var string
      */
-    protected $sessionName = 'ab';
+    protected $cookieName = 'ab';
 
     /**
      * A copy of the session data.
@@ -19,11 +19,18 @@ class LaravelSession implements SessionInterface {
     protected $data = null;
 
     /**
+     * Cookie lifetime.
+     *
+     * @var integer
+     */
+    protected $minutes = 60;
+
+    /**
      * Constructor.
      */
     public function __construct()
     {
-        $this->data = Session::get($this->sessionName, []);
+        $this->data = Cookie::get($this->cookieName, []);
     }
 
     /**
@@ -41,7 +48,7 @@ class LaravelSession implements SessionInterface {
     {
         $this->data[$name] = $value;
 
-        return Session::set($this->sessionName, $this->data);
+        return Cookie::queue($this->cookieName, $this->data, $this->minutes);
     }
 
     /**
@@ -51,7 +58,7 @@ class LaravelSession implements SessionInterface {
     {
         $this->data = [];
 
-        return Session::forget($this->sessionName);
+        return Cookie::queue($this->cookieName, null, -2628000);
     }
 
 }
