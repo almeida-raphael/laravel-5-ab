@@ -1,7 +1,7 @@
-<?php namespace Jenssegers\AB\Commands;
+<?php namespace RCAlmeida\AB\Commands;
 
-use Jenssegers\AB\Models\Experiment;
-use Jenssegers\AB\Models\Goal;
+use RCAlmeida\AB\Models\Experiment;
+use RCAlmeida\AB\Models\Goal;
 
 use Config;
 use DB;

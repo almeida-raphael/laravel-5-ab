@@ -1,7 +1,7 @@
-<?php namespace Jenssegers\AB;
+<?php namespace RCAlmeida\AB;
 
-use Jenssegers\AB\Session\LaravelSession;
-use Jenssegers\AB\Session\CookieSession;
+use RCAlmeida\AB\Session\LaravelSession;
+use RCAlmeida\AB\Session\CookieSession;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -22,7 +22,7 @@ class TesterServiceProvider extends ServiceProvider {
     public function boot()
     {
         // Fix for PSR-4
-        //$this->package('jenssegers/ab', 'ab', realpath(__DIR__));
+        //$this->package('RCAlmeida/ab', 'ab', realpath(__DIR__));
         $this->loadViewsFrom(realpath(__DIR__), 'ab');
         
         $this->publishes([
@@ -75,7 +75,7 @@ class TesterServiceProvider extends ServiceProvider {
         // Bind the command objects.
         foreach ($commands as &$command)
         {
-            $class = 'Jenssegers\\AB\\Commands\\' . ucfirst($command) . 'Command';
+            $class = 'RCAlmeida\\AB\\Commands\\' . ucfirst($command) . 'Command';
             $command = "ab::command.$class";
 
             $this->app->bind($command, function($app) use ($class)
