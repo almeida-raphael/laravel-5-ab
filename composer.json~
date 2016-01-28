@@ -1,10 +1,10 @@
 {
-    "name": "almeida/ab",
+    "name": "rcalmeida/ab",
     "description": "A server-side A/B testing tool for Laravel 5.",
     "keywords": ["laravel","optimizely","ab","split","testing"],
     "authors": [
         {
-            "name": "Raphael Almeida"
+            "name": "Raphael C Almeida"
         }
     ],
     "license" : "MIT",
@@ -21,7 +21,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Almeida\\AB\\": "src/"
+            "RCAlmeida\\AB\\": "src/"
         }
     }
 }

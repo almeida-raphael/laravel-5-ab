@@ -10,22 +10,22 @@ Installation
 
 Install using composer:
 
-    composer require almeida/ab
+    composer require rcalmeida/ab
 
 Add the service provider in `app/config/app.php`:
 
-    'Jenssegers\AB\TesterServiceProvider',
+    'RCAlmeida\AB\TesterServiceProvider',
 
 Register the AB alias:
 
-    'AB'           => 'Almeida\AB\Facades\AB',
+    'AB'           => 'RCAlmeida\AB\Facades\AB',
 
 Configuration
 -------------
 
 Publish the included configuration file:
 
-    php artisan config:publish almeida/ab
+    php artisan config:publish rcalmeida/ab
 
 Next, edit the `config/ab.php` file. The following configuration options are available:
 
