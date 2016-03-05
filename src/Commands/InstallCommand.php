@@ -88,6 +88,7 @@ class InstallCommand extends Command {
         }
 
         // Populate experiments and goals.
+        $experimentCount = 0;
         foreach ($experimentGroups as $groupName =>$experimentGroup)
         {
             foreach ($experimentGroup as $experiment)
@@ -98,10 +99,12 @@ class InstallCommand extends Command {
                 {
                     Goal::firstOrCreate(['name' => $goal, 'experiment' => $experiment]);
                 }
+
+                $experimentCount += count($experimentGroups);
             }
         }
 
-        $this->info('Added ' . count($experimentGroups) . ' experiments.');
+        $this->info('Added ' . $experimentCount . ' experiments.');
     }
 
     /**
