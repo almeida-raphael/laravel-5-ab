@@ -50,6 +50,7 @@ class InstallCommand extends Command {
             Schema::connection($connection)->create('experiments', function($table)
             {
                 $table->increments('id');
+                $table->string('group');
                 $table->string('name');
                 $table->integer('visitors')->unsigned()->default(0);
                 $table->integer('engagement')->unsigned()->default(0);
@@ -72,9 +73,9 @@ class InstallCommand extends Command {
 
         $this->info('Database schema initialized.');
 
-        $experiments = Config::get('ab')['experiments'];
+        $experimentGroups = Config::get('ab')['experiments'];
 
-        if ( ! $experiments or empty($experiments))
+        if ( ! $experimentGroups or empty($experimentGroups))
         {
             return $this->error('No experiments configured.');
         }
@@ -87,17 +88,20 @@ class InstallCommand extends Command {
         }
 
         // Populate experiments and goals.
-        foreach ($experiments as $experiment)
+        foreach ($experimentGroups as $groupName =>$experimentGroup)
         {
-            Experiment::firstOrCreate(['name' => $experiment]);
-
-            foreach ($goals as $goal)
+            foreach ($experimentGroup as $experiment)
             {
-                Goal::firstOrCreate(['name' => $goal, 'experiment' => $experiment]);
+                Experiment::firstOrCreate(['name' => $experiment, 'group' => $groupName]);
+
+                foreach ($goals as $goal)
+                {
+                    Goal::firstOrCreate(['name' => $goal, 'experiment' => $experiment]);
+                }
             }
         }
 
-        $this->info('Added ' . count($experiments) . ' experiments.');
+        $this->info('Added ' . count($experimentGroups) . ' experiments.');
     }
 
     /**

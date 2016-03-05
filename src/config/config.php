@@ -18,9 +18,20 @@ return array(
     | Experiments
     |--------------------------------------------------------------------------
     |
-    | A list of experiment identifiers.
+    | An array of groups of experiment identifiers.
     |
-    | Example: ['big-logo', 'small-buttons']
+    | Example: [
+    |               'body' =>
+    |               [
+    |                   'big-logo',
+    |                   'small-buttons',
+    |               ],
+    |               'footer-font' =>
+    |               [
+    |                   'lato',
+    |                   'righteous',
+    |               ]
+    |          ]
     |
     */
 
