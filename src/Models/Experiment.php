@@ -26,9 +26,19 @@ class Experiment extends Eloquent {
 
     public function scopeActive($query)
     {
-        if ($experiments = Config::get('ab::experiments'))
+        $experimentGroups = Config::get('ab', [])['experiments'];
+
+        if ($experimentGroups)
         {
-            return $query->whereIn('name', Config::get('ab::experiments'));
+            $experiments = [];
+
+            foreach($experimentGroups as $group){
+                foreach($group as $experiment) {
+                    $experiments[] = $experiment;
+                }
+            }
+
+            return $query->whereIn('name', $experiments);
         }
 
         return $query;

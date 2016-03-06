@@ -170,7 +170,16 @@ class Tester {
      */
     public function getExperiments()
     {
-        return Config::get('ab', [])['experiments'];
+        $experimentGroups = Config::get('ab', [])['experiments'];
+        $experiments = [];
+
+        foreach($experimentGroups as $group){
+            foreach($group as $experiment) {
+                $experiments[] = $experiment;
+            }
+        }
+
+        return $experiments;
     }
 
     /**
