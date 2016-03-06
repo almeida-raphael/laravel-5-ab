@@ -5,11 +5,11 @@ use Illuminate\Database\Eloquent\Model as Eloquent;
 
 class Experiment extends Eloquent {
 
-    protected $casts = [ 'name' => 'string' ];
+    protected $casts = [ 'name' => 'string', 'group' => 'string'];
 
     protected $primaryKey = 'name';
 
-    protected $fillable = ['name', 'visitors', 'engagement'];
+    protected $fillable = ['name', 'group', 'visitors', 'engagement'];
 
     public function __construct(array $attributes = array())
     {
