@@ -1,5 +1,6 @@
 <?php namespace RCAlmeida\AB\Middleware;
 
+use Cookie;
 use RCAlmeida\AB\TesterServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Contracts\Routing\Middleware;
