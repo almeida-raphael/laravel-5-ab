@@ -40,8 +40,10 @@ class BeforeMiddleware implements Middleware {
 	 */
 	public function handle($request, Closure $next)
 	{
-       //$tester = new TesterServiceProvider();
-       $this->app['ab']->track($request);
+        //$tester = new TesterServiceProvider();
+		if(!Cookie::get('DevEnv')){
+			$this->app['ab']->track($request);
+		}
 		return $next($request);
 	}
 
